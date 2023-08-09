@@ -7,7 +7,7 @@ pipeline {
         stage('Build docker image') {
             steps {  
                 echo "Building Docker image..."
-                sh 'docker build -t jenish007/flaskapp:$BUILD_NUMBER .'
+                sh 'docker build -t anniemajellav/flaskapp:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -34,7 +34,7 @@ pipeline {
                 sh 'docker rm myapp-container || true'
 
                 // Run the new container with the latest image
-                sh 'docker run -d --name myapp-container -p 8000:8000 jenish007/flaskapp:$BUILD_NUMBER'
+                sh 'docker run -d --name myapp-container -p 8000:8000 anniemajellav/flaskapp:$BUILD_NUMBER'
             }
         }
     }
